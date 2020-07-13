@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bytes"
+	"fmt"
+	"strconv"
+)
 
 // List of 5 elements
 type List []int
@@ -14,6 +18,19 @@ func (list List) Search(n int) int {
 	}
 
 	return -1
+}
+
+func (list List) String() string {
+	var b bytes.Buffer
+	l := len(list)
+	for i, v := range list {
+		b.WriteString(strconv.Itoa(v))
+		if i != l-1 {
+			b.WriteString(",")
+		}
+	}
+
+	return b.String()
 }
 
 /* func search(arr [5]int, n int) int {
@@ -32,4 +49,5 @@ func main() {
 	fmt.Println(search(arr, 3)) */
 	list := List{1, 2, 3, 4, 5}
 	fmt.Println(list.Search(4))
+	fmt.Println(list)
 }
