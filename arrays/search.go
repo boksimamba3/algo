@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // List of 5 elements
-type List [5]int
+type List []int
 
 // Search finds elements in list
 func (list List) Search(n int) int {
@@ -31,5 +31,5 @@ func main() {
 	/* arr := [5]int{1, 2, 3, 4, 5}
 	fmt.Println(search(arr, 3)) */
 	list := List{1, 2, 3, 4, 5}
-	fmt.Println(list.Search(3))
+	fmt.Println(list.Search(4))
 }
