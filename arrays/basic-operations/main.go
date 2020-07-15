@@ -32,10 +32,21 @@ func (list List) IsSorted() bool {
 }
 
 // Reverse list
-func (list List) Reverse() {
+/* func (list List) Reverse() {
 	n := len(list)
 	for i := 0; i < n/2; i++ {
 		list[i], list[n-1-i] = list[n-1-i], list[i]
+	}
+} */
+// Reverse list
+func (list List) Reverse() {
+	low := 0
+	high := len(list) - 1
+
+	for low < high {
+		list[low], list[high] = list[high], list[low]
+		low++
+		high--
 	}
 }
 
