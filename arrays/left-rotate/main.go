@@ -19,7 +19,8 @@ import "fmt"
 
 // Left rotate by n places
 func leftRotate(arr []int, d int) []int {
-	if len(arr) == 0 {
+	n := len(arr)
+	if n == 0 {
 		return arr
 	}
 
@@ -27,12 +28,11 @@ func leftRotate(arr []int, d int) []int {
 	for i := 0; i < d; i++ {
 		tempArr = append(tempArr, arr[i])
 	}
-	for i := d; i < len(arr); i++ {
+	for i := d; i < n; i++ {
 		arr[i-d] = arr[i]
 	}
-	n := len(arr) - d
 	for i := 0; i < len(tempArr); i++ {
-		arr[n+i] = tempArr[i]
+		arr[n-d+i] = tempArr[i]
 	}
 
 	return arr
