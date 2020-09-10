@@ -33,6 +33,12 @@ func maxLenOddEvenSubarray(arr []int) int {
 		}
 		previous = current
 		consecutiveMaxLength = max(consecutiveMaxLength, consecutiveLength)
+		/* if (arr[i]%2 == 0 && arr[i-1]%2 != 0) || (arr[i]%2 != 0 && arr[i-1]%2 == 0) {
+			consecutiveLength++
+			consecutiveMaxLength = max(consecutiveMaxLength, consecutiveLength)
+		} else {
+			consecutiveLength = 1
+		} */
 	}
 
 	return consecutiveMaxLength
@@ -41,4 +47,5 @@ func maxLenOddEvenSubarray(arr []int) int {
 func main() {
 	fmt.Println(maxLenOddEvenSubarray([]int{1, 2, 3, 4, 5, 6, 8, 10}))
 	fmt.Println(maxLenOddEvenSubarray([]int{10, 12, 14, 7, 8}))
+	fmt.Println(maxLenOddEvenSubarray([]int{5, 10, 20, 6, 3, 8}))
 }
