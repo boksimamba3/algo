@@ -11,7 +11,7 @@ func max(a int, b int) int {
 }
 
 // Naive solution 0(n^2)
-func maxSumCircuralSubarray(arr []int) int {
+/* func maxSumCircuralSubarray(arr []int) int {
 	if len(arr) < 1 {
 		return 0
 	}
@@ -30,6 +30,35 @@ func maxSumCircuralSubarray(arr []int) int {
 	}
 
 	return maxSum
+} */
+
+func maxSumSubarray(arr []int) int {
+	maxSum := arr[0]
+	maxConsecutiveSum := arr[0]
+	for i := 1; i < len(arr); i++ {
+		maxConsecutiveSum = max(arr[i], maxConsecutiveSum+arr[i])
+		maxSum = max(maxSum, maxConsecutiveSum)
+	}
+
+	return maxSum
+}
+
+func maxSumCircuralSubarray(arr []int) int {
+	maxConsecutiveSum := maxSumSubarray(arr)
+	if maxConsecutiveSum < 0 {
+		return 0
+	}
+
+	arrSum := 0
+
+	for i := 0; i < len(arr); i++ {
+		arrSum += arr[i]
+		arr[i] = -arr[i]
+	}
+	// Finding max sum in inverted array is like finding min in original
+	maxCircuralSum := arrSum + maxSumSubarray(arr)
+
+	return max(maxCircuralSum, maxConsecutiveSum)
 }
 
 func main() {
