@@ -63,4 +63,5 @@ func maxSumCircuralSubarray(arr []int) int {
 
 func main() {
 	fmt.Println(maxSumCircuralSubarray([]int{5, -2, 3, 4}))
+	fmt.Println(maxSumCircuralSubarray([]int{8, -4, 3, -5, 4}))
 }
