@@ -10,6 +10,7 @@ func max(a int, b int) int {
 	return b
 }
 
+// O(N)
 func maxSum(arr []int, k int) int {
 	if k > len(arr) {
 		return 0
