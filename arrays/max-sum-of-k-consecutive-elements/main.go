@@ -24,8 +24,8 @@ func maxSum(arr []int, k int) int {
 
 	currSum := sum
 
-	for start, end := 0, k; end < len(arr); start, end = start+1, end+1 {
-		currSum += arr[end] - arr[start]
+	for i := k; i < len(arr); i++ {
+		currSum += arr[i] - arr[i-k]
 		sum = max(sum, currSum)
 	}
 
@@ -33,5 +33,5 @@ func maxSum(arr []int, k int) int {
 }
 
 func main() {
-	fmt.Println(maxSum([]int{1, 8, 30, -5, 20}, 3))
+	fmt.Println(maxSum([]int{1, 8, 30, -5, 20}, 1))
 }
