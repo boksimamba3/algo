@@ -2,23 +2,55 @@ package main
 
 import "fmt"
 
-func binarySearch(arr []int, x int) int {
-	start := 0
-	end := len(arr) - 1
+/* func binarySearchR(arr []int, target int) int {
 
-	for end >= start {
-		mid := (end + start) / 2
+	var binarySearch func(arr []int, target, low, high int) int
 
-		if arr[mid] == x {
+	binarySearch = func(arr []int, target, low, high int) int {
+		if low > high {
+			return -1
+		}
+
+		mid := (high + low) / 2
+
+		if arr[mid] == target {
 			return mid
 		}
 
-		if x < arr[mid] {
-			end = mid - 1
+		if target < arr[mid] {
+			return binarySearch(arr, target, low, mid-1)
 		}
 
-		if x > arr[mid] {
-			start = mid + 1
+		if target > arr[mid] {
+			return binarySearch(arr, target, mid+1, high)
+		}
+
+		return -1
+	}
+
+	return binarySearch(arr, target, 0, len(arr)-1)
+
+}
+*/
+
+// O(logN)
+func binarySearch(arr []int, target int) int {
+	low := 0
+	high := len(arr) - 1
+
+	for high >= low {
+		mid := (high + low) / 2
+
+		if arr[mid] == target {
+			return mid
+		}
+
+		if target < arr[mid] {
+			high = mid - 1
+		}
+
+		if target > arr[mid] {
+			low = mid + 1
 		}
 	}
 
