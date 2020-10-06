@@ -5,13 +5,13 @@ import "fmt"
 // O(N^2)
 func sort(arr []int) {
 	for i := 0; i < len(arr); i++ {
-		min := i
+		minIndex := i
 		for j := i + 1; j < len(arr); j++ {
-			if arr[j] < arr[min] {
-				min = j
+			if arr[j] < arr[minIndex] {
+				minIndex = j
 			}
 		}
-		arr[i], arr[min] = arr[min], arr[i]
+		arr[i], arr[minIndex] = arr[minIndex], arr[i]
 	}
 }
 
