@@ -2,40 +2,33 @@ package main
 
 import "fmt"
 
+// O(logN)
 func countOnes(arr []int) int {
 
-	var firstOccurrence func(arr []int, target, low, high int) int
+	var firstOccurrence func(arr []int, low, high int) int
 
-	firstOccurrence = func(arr []int, target, low, high int) int {
+	firstOccurrence = func(arr []int, low, high int) int {
 		if low > high {
-			return -1
+			return 0
 		}
 
 		mid := (low + high) / 2
 
-		if target < arr[mid] {
-			return firstOccurrence(arr, target, low, mid-1)
-		} else if target > arr[mid] {
-			return firstOccurrence(arr, target, mid+1, high)
-		} else {
-			if mid == 0 || arr[mid-1] != arr[mid] {
-				return mid
-			}
-
-			return firstOccurrence(arr, target, low, mid-1)
+		if arr[mid] < 1 {
+			return firstOccurrence(arr, mid+1, high)
 		}
+
+		if mid == 0 || arr[mid-1] != arr[mid] {
+			return len(arr) - mid
+		}
+
+		return firstOccurrence(arr, low, mid-1)
 	}
 
-	indexOfFirst := firstOccurrence(arr, 1, 0, len(arr)-1)
-
-	if indexOfFirst == -1 {
-		return 0
-	}
-
-	return len(arr) - indexOfFirst
+	return firstOccurrence(arr, 0, len(arr)-1)
 }
 
 func main() {
-	arr := []int{0, 0, 0, 1, 1, 1, 1}
+	arr := []int{0, 1, 1, 1}
 	fmt.Println(countOnes(arr))
 }

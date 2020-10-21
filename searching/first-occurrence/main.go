@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// O(logN)
 func findFirstOccurrence(arr []int, target int) int {
 
 	var firstOccurrence func(arr []int, target, low, high int) int
