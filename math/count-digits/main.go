@@ -13,10 +13,10 @@ import (
 /*
 	Divide number by 10 until is greater then 0.
 	In = 798, Out = 3
-	x = 798, count = 0
-	I1: x => 798/10 = 79 count = 1
-	I2: x => 79/10 = 7 count = 2
-	I3: x => 7/10 = 0 count = 3
+	x = 798, digits = 0
+	I1: x => 798/10 = 79 digits = 1
+	I2: x => 79/10 = 7 digits = 2
+	I3: x => 7/10 = 0 digits = 3
 */
 /* func countDigits(x int) int {
 	if x <= 0 {
