@@ -14,9 +14,9 @@ import (
 	Divide number by 10 until is greater then 0.
 	In = 798, Out = 3
 	n = 798, digits = 0
-	I1: n => 798/10 = 79 digits = 1
-	I2: n => 79/10 = 7 digits = 2
-	I3: n => 7/10 = 0 digits = 3
+	I1: n => 798/10 = 79, digits = 1
+	I2: n => 79/10 = 7, digits = 2
+	I3: n => 7/10 = 0, digits = 3
 */
 /* func countDigits(n int) int {
 	if n <= 0 {

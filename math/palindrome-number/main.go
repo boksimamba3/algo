@@ -7,7 +7,7 @@ import "fmt"
 // Example:  In: 78987, Out: true;  In: 8, Out: true; In: 254, Out: false;
 // Note: In(n) >= 0
 
-// Solution: Naive N(d) d = digits
+// Solution: O(d) d = digits
 /*
 	Last digit n % 10. Remaining n/10.
 	Reverse number is rev = rev * 10 + lastDigit.
