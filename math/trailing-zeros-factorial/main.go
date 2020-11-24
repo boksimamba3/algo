@@ -35,7 +35,7 @@ import "fmt"
 /*
 	Count how many twos and fives we have in prime factorization
 	of give factorial. Pair of two and five forms one trailing zero.
-	We can only count number of five since number of fives will be
+	We can only count number of fives since number of fives will be
 	allways less then number of twos.
 	1x2x3x4x5x6x7x8x9x10...n
 	Trailing zero count => floor(n/5)+floor(n/25)+floor(n/125)...
