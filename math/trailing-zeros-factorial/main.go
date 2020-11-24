@@ -30,7 +30,7 @@ import "fmt"
 } */
 
 // Solution: Optimized O(logN) logBase=5
-// Note: Prime factorization which prime numbers multiply
+// Note: Prime factorization: which prime numbers multiply
 // together to make the original number.
 /*
 	Count how many twos and fives we have in prime factorization
