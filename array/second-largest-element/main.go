@@ -61,11 +61,11 @@ func getLargest(arr []int) int {
 	Keep track of largest and second largest element.
 	First check if current element is larger than previous
 	largest element, if so change second largest to
-	previous one, a curret largest is current element.
+	previous largest, and curret largest is current element.
 	If current element is not larger than current largest we need
-	to check if it is different, if so then check if we had
+	to check if it is different, if so check if we had
 	previous second largest or current element is larger than previous
-	second largest. Otherwise ignore current element.
+	second largest element. Otherwise ignore current element.
 */
 func secondLargest(arr []int) int {
 	if len(arr) < 2 {
