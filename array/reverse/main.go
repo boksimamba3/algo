@@ -12,13 +12,9 @@ import "fmt"
 	Swap left half with right half of the array.
 */
 func reverse(arr []int) {
-	left := 0
-	right := len(arr) - 1
-
-	for left < right {
-		arr[left], arr[right] = arr[right], arr[left]
-		left++
-		right--
+	length := len(arr)
+	for i := 0; i < length/2; i++ {
+		arr[i], arr[length-1-i] = arr[length-1-i], arr[i]
 	}
 }
 

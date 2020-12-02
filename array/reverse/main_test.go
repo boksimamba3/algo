@@ -16,6 +16,7 @@ func TestReverse(t *testing.T) {
 		{in: []int{20, 10, 20, 8, 12}, out: []int{12, 8, 20, 10, 20}},
 		{in: []int{10, 10, 10}, out: []int{10, 10, 10}},
 		{in: []int{1, 2, 3, 4, 5}, out: []int{5, 4, 3, 2, 1}},
+		{in: []int{1, 2, 3, 4}, out: []int{4, 3, 2, 1}},
 	}
 
 	for _, test := range testData {
