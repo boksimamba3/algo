@@ -2,32 +2,27 @@ package main
 
 import "fmt"
 
-// Left rotate by one place
-/* func leftRotate(arr []int) {
-	temp := arr[0]
-	for i := 1; i < len(arr); i++ {
-		arr[i-1] = arr[i]
-	}
-	arr[len(arr)-1] = temp
-} */
+// Question: Left rotate by d places
+// Example:
+// arr: [1, 2, 3, 4, 5]; rotatedOnePlace: [2, 3, 4, 5, 1]
+// arr: [1, 2, 3, 4, 5]; rotatedTwoPlaces: [3, 4, 5, 1, 2]
+// arr: [1, 2, 3, 4, 5]; rotatedThreePlaces: [4, 5, 1, 2, 3]
 
-// Left rotate by n places Time O(N) Space O(d)
-/* func leftRotate(arr []int, d int) {
-	n := len(arr)
+// Solution: 0(N) Space O(1)
+/*
+	First rotate array that starts at begining and
+	ends at d-1, where d is number of places we want to
+	left rotate array. After that reverse the array that starts
+	at d and ends at n-1, where n is length of array.
+	Once we rotated those two parts rotate the whole array.
 
-	tempArr := []int{}
-	for i := 0; i < d; i++ {
-		tempArr = append(tempArr, arr[i])
-	}
-	for i := d; i < n; i++ {
-		arr[i-d] = arr[i]
-	}
-	for i := 0; i < len(tempArr); i++ {
-		arr[n-d+i] = tempArr[i]
-	}
-} */
+	arr := {1, 2, 3, 4, 5} => {3, 4, 5, 1, 2}
 
-// Left rotate by n places Time O(N) Space O(1)
+	In = {1, 2, 3, 4, 5}, Out: {3, 4, 5, 1, 2}
+	I1: reverse(arr, 0, d-1) => {2, 1, 3, 4, 5}
+	I2: reverse(arr, 0, n-1) => {2, 1, 5, 4, 3}
+	I3: reverse(arr, 0, n-1) => {3, 4, 5, 1, 2}
+*/
 func leftRotate(arr []int, d int) {
 	n := len(arr)
 	reverse(arr, 0, d-1)
