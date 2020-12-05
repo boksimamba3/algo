@@ -5,14 +5,14 @@ import (
 	"testing"
 )
 
-type TestData struct {
+type TestCase struct {
 	in  []int
 	out []int
 }
 
 func TestZerosToEnd(t *testing.T) {
 
-	testData := []TestData{
+	cases := []TestCase{
 		{in: []int{20, 10, 20, 8, 12}, out: []int{20, 10, 20, 8, 12}},
 		{in: []int{10, 10, 0, 0, 10}, out: []int{10, 10, 10, 0, 0}},
 		{in: []int{1, 0, 0, 2, 3}, out: []int{1, 2, 3, 0, 0}},
@@ -20,7 +20,7 @@ func TestZerosToEnd(t *testing.T) {
 		{in: []int{0, 0, 0, 10, 0}, out: []int{10, 0, 0, 0, 0}},
 	}
 
-	for _, test := range testData {
+	for _, test := range cases {
 		original := make([]int, len(test.in))
 		copy(original, test.in)
 		zerosToEnd(test.in)
