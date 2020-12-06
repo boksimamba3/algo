@@ -31,7 +31,7 @@ func removeDuplicates(arr []int) []int {
 		return arr
 	}
 
-	j := 1
+	j := 1 // position of next distinct element
 	for i := 1; i < len(arr); i++ {
 		if arr[i] != arr[j-1] {
 			arr[j] = arr[i]
