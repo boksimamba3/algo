@@ -11,7 +11,7 @@ type TestCase struct {
 	out []int
 }
 
-func TestReverse(t *testing.T) {
+func TestRightRotate(t *testing.T) {
 
 	cases := []TestCase{
 		{in: []int{1, 2, 3, 4, 5}, d: 1, out: []int{5, 1, 2, 3, 4}},
