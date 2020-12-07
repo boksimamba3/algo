@@ -9,7 +9,7 @@ import (
 // List is slice of ints
 type List []int
 
-// Search finds elements in list
+// Search elements in list
 func (list List) Search(n int) int {
 	for i := 0; i < len(list); i++ {
 		if n == list[i] {
@@ -32,13 +32,6 @@ func (list List) IsSorted() bool {
 }
 
 // Reverse list
-/* func (list List) Reverse() {
-	n := len(list)
-	for i := 0; i < n/2; i++ {
-		list[i], list[n-1-i] = list[n-1-i], list[i]
-	}
-} */
-// Reverse list
 func (list List) Reverse() {
 	low := 0
 	high := len(list) - 1
@@ -48,6 +41,20 @@ func (list List) Reverse() {
 		low++
 		high--
 	}
+}
+
+// Circural access to list elements starting from position d
+func (list List) Circural(d int) <-chan int {
+	out := make(chan int)
+
+	go func() {
+		for i := d; i < len(list)+d; i++ {
+			out <- list[i%len(list)]
+		}
+		close(out)
+	}()
+
+	return out
 }
 
 // String formats output
@@ -66,10 +73,14 @@ func (list List) String() string {
 
 func main() {
 	list := List{1, 2, 3, 4, 5}
-	//fmt.Println(list.Search(4))
-	//fmt.Println(list.IsSorted())
+	fmt.Println("Position of number 4:", list.Search(4))
+	fmt.Println("Is list sorted:", list.IsSorted())
 	list.Reverse()
-	fmt.Println(list)
+	fmt.Println("Reversed list:", list)
 	list.Reverse()
-	fmt.Println(list)
+	fmt.Println("Reversed back:", list)
+	fmt.Println("Circural access to list:")
+	for x := range list.Circural(2) {
+		fmt.Println(x)
+	}
 }
