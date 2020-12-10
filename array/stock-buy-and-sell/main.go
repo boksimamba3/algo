@@ -9,11 +9,11 @@ import "fmt"
 
 // Solution: O(N)
 /*
-	We buy stock when they are at lowest. If the stock are
+	We buy stocks when they are at lowest. If the stocks are
 	rising we keep then until they reach the peek. When
 	they have reached the peek we sell them and we will buy
 	them again when they start rising. On every bottom point buy
-	stock and on every peek sell the stock.
+	stocks and on every peek sell the stocks.
 
 	In = {1, 5, 3, 1, 2, 8}, Out: 11
 	profit = 0
