@@ -6,9 +6,9 @@ import "fmt"
 // where the width of each bar is 1, compute how much water it can trap after raining.
 // Note: we cannot store water on corner bars
 // Example: In: {3, 0, 1, 2, 5}, Out: 6
-/* 								 ---
-									|   |
- 	 ---	~		~		~ |   |
+/*			 ---
+			|   |
+ 	 ---  ~	  ~   ~ |   |
 	|   | ~   ~  ---|   |
 	|   | ~  ---|   |   |
 	|_3_|_0_|_1_|_2_|_5_|
