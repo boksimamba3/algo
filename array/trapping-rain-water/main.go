@@ -4,6 +4,7 @@ import "fmt"
 
 // Question: Given n non-negative integers representing an elevation map
 // where the width of each bar is 1, compute how much water it can trap after raining.
+// Note: we cannot store water on corner bars
 // Example: In: {3, 0, 1, 2, 5}, Out: 6
 /* 								 ---
 									|   |
