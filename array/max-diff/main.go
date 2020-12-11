@@ -7,9 +7,10 @@ import (
 // Question: Find maximun difference of arr, arr[j] - arr[i] where j > i.
 
 // Solution: O(N)
-// Traverse the whole array, and while doing so
-// keep track of minimum element on the left:
 /*
+  Traverse the whole array, and while doing so
+  keep track of minimum element on the left:
+
 	In: {3, 4, 2, 8, 10, 1}, Out: 8
 	maxDiff => arr[1] - arr[0] = 1
 	minVal => min(3, 4) => 3
