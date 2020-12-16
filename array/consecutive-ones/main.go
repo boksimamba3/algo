@@ -4,14 +4,16 @@ import (
 	"fmt"
 )
 
-func max(a int, b int) int {
-	if a > b {
-		return a
-	}
+// Question: Find count of maximum consecutive 1s in a binary array.
+// Example: In: {0, 0, 1, 1, 1, 0, 1}, Out: 3
 
-	return b
-}
-
+// Solution: O(N)
+/*
+	Traverse the array from left to right. Whenever we see
+	a zero we reset a consecutive count. Whenever we see one
+	we increment the consecutive count and compare it with
+	previous maximum consecutive count.
+*/
 func consecutiveOnes(arr []int) int {
 	consecutiveCount := 0
 	maxConsecutiveCount := 0
@@ -26,6 +28,14 @@ func consecutiveOnes(arr []int) int {
 	}
 
 	return maxConsecutiveCount
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
 }
 
 func main() {
