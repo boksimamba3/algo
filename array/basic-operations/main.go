@@ -11,7 +11,7 @@ type List []int
 
 // Search elements in list
 func (list List) Search(n int) int {
-	for i := 0; i < len(list); i++ {
+	   for i := 0; i < len(list); i++ {
 		if n == list[i] {
 			return i
 		}
