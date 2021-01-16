@@ -101,10 +101,32 @@ func (l *List) Print() {
 	}
 }
 
+func printList(e *Element) {
+	if e == nil {
+		return
+	}
+
+	fmt.Println(e.Value)
+	printList(e.Next())
+}
+
+func printListReverse(e *Element) {
+	if e == nil {
+		return
+	}
+
+	fmt.Println(e.Value)
+	printListReverse(e.Prev())
+}
+
 func main() {
 	list := New()
 	list.PushBack(1)
 	list.PushBack(2)
 	list.PushBack(3)
-	list.Print()
+	list.PushBack(4)
+	// list.Print()
+	printList(list.Front())
+	fmt.Println()
+	printListReverse(list.Back())
 }
