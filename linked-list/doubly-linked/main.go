@@ -8,6 +8,10 @@ type Element struct {
 	Value      interface{}
 }
 
+func NewElement(v interface{}, list *List) *Element {
+	return &Element{Value: v, list: list}
+}
+
 // Next returns the next list element or nil.
 func (e *Element) Next() *Element {
 	if p := e.next; e.list != nil && p != &e.list.root {
@@ -81,7 +85,7 @@ func (l *List) insert(e, at *Element) *Element {
 
 // insertValue is a convenience wrapper for insert(&Element{Value: v}, at).
 func (l *List) insertValue(v interface{}, at *Element) *Element {
-	return l.insert(&Element{Value: v}, at)
+	return l.insert(NewElement(v, l), at)
 }
 
 // PushFront inserts a new element e with value v at the front of list l and returns e.
