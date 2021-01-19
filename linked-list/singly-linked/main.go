@@ -80,7 +80,7 @@ func (l *List) PushFront(v interface{}) *Element {
 }
 
 // Push back inserts a new element e with value v at the back of list l and returns e.
-func (l *List) PushBack(v interface{}) {
+func (l *List) PushBack(v interface{}) *Element {
 	l.lazyInit()
 	e := NewElement(v, l)
 	if l.head == nil {
@@ -95,6 +95,37 @@ func (l *List) PushBack(v interface{}) {
 		p.next = e
 	}
 	l.len++
+
+	return e
+}
+
+// PopFront removes first element of the list and returns e
+func (l *List) PopFront() *Element {
+	if l.head == nil {
+		return nil
+	}
+	e := l.head
+	l.head = e.next
+	e.next = nil
+	l.len--
+
+	return e
+}
+
+// PopBack removes last element of the list and returns e
+func (l *List) PopBack() *Element {
+	if l.head == nil {
+		return nil
+	}
+	prev := l.head
+	e := prev
+	for e.next != nil {
+		prev = e
+		e = e.next
+	}
+	prev.next = nil
+	l.len--
+	return e
 }
 
 func (l *List) Print() {
@@ -107,7 +138,12 @@ func main() {
 	list := New()
 	list.PushBack(1)
 	list.PushBack(2)
-	list.PushBack(3)
+	fmt.Println("Pop value from back", list.PopBack().Value)
+	fmt.Println("Pop value from back", list.PopBack().Value)
+	/* list.PushBack(3)
 	list.PushBack(4)
-	list.Print()
+	list.PushFront(50)
+	fmt.Println("Pop value from front", list.PopFront().Value)
+	fmt.Println("Pop value from back", list.PopBack().Value)
+	list.Print() */
 }
