@@ -128,6 +128,27 @@ func (l *List) PopBack() *Element {
 	return e
 }
 
+func (l *List) InsertAt(n int, v interface{}) *Element {
+	if n < 0 || n > l.len+1 {
+		return nil
+	}
+	e := NewElement(v, l)
+	if n == 1 {
+		e.next = l.head
+		l.head = e
+	} else {
+		p := l.head
+		for i := 2; i < n; i++ {
+			p = p.next
+		}
+		e.next = p.next
+		p.next = e
+	}
+	l.len++
+
+	return e
+}
+
 func (l *List) Print() {
 	for e := l.Front(); e != nil; e = e.Next() {
 		fmt.Println(e.Value)
@@ -138,12 +159,8 @@ func main() {
 	list := New()
 	list.PushBack(1)
 	list.PushBack(2)
-	fmt.Println("Pop value from back", list.PopBack().Value)
-	fmt.Println("Pop value from back", list.PopBack().Value)
-	/* list.PushBack(3)
-	list.PushBack(4)
-	list.PushFront(50)
-	fmt.Println("Pop value from front", list.PopFront().Value)
-	fmt.Println("Pop value from back", list.PopBack().Value)
-	list.Print() */
+	list.InsertAt(2, 10)
+	list.InsertAt(-2, 10)
+	list.Print()
+	fmt.Println(list.Len())
 }
