@@ -35,6 +35,11 @@ func (l *List) Init() *List {
 	return l
 }
 
+// IsEmpty checks if list is empty
+func (l *List) IsEmpty() bool {
+	return l.len == 0
+}
+
 // Len return number of elements in list
 func (l *List) Len() int {
 	return l.len
@@ -42,7 +47,7 @@ func (l *List) Len() int {
 
 // Front returns the first element of list l or nil if the list is empty.
 func (l *List) Front() *Element {
-	if l.len == 0 {
+	if l.IsEmpty() {
 		return nil
 	}
 	return l.head
@@ -50,7 +55,7 @@ func (l *List) Front() *Element {
 
 // Back returns the last element of list l or nil if the list is empty.
 func (l *List) Back() *Element {
-	if l.len == 0 {
+	if l.IsEmpty() {
 		return nil
 	}
 
@@ -130,16 +135,16 @@ func (l *List) PopBack() *Element {
 
 // InsertAt inserts value at postion n
 func (l *List) InsertAt(n int, v interface{}) *Element {
-	if n < 0 || n > l.len+1 {
+	if n < 0 || n > l.len {
 		return nil
 	}
 	e := NewElement(v, l)
-	if n == 1 {
+	if n == 0 {
 		e.next = l.head
 		l.head = e
 	} else {
 		p := l.head
-		for i := 2; i < n; i++ {
+		for i := 1; i < n; i++ {
 			p = p.next
 		}
 		e.next = p.next
@@ -148,6 +153,19 @@ func (l *List) InsertAt(n int, v interface{}) *Element {
 	l.len++
 
 	return e
+}
+
+// Search value in the list. If element is present in the list return his position otherwise -1
+func (l *List) Search(v interface{}) int {
+	i := 0
+	for p := l.head; p != nil; p = p.next {
+		if p.Value == v {
+			return i
+		}
+		i++
+	}
+
+	return -1
 }
 
 func (l *List) Print() {
@@ -160,8 +178,7 @@ func main() {
 	list := New()
 	list.PushBack(1)
 	list.PushBack(2)
-	list.InsertAt(2, 10)
-	list.InsertAt(-2, 10)
+	list.InsertAt(1, 10)
 	list.Print()
-	fmt.Println(list.Len())
+	fmt.Println(list.Search(10))
 }
