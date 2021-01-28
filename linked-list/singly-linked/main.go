@@ -155,8 +155,27 @@ func (l *List) InsertAt(n int, v interface{}) *Element {
 	return e
 }
 
-// Search value in the list. If element is present in the list return his position otherwise -1
+func (l *List) search(e *Element, v interface{}, i int) int {
+	if e == nil {
+		return -1
+	}
+	if e.Value == v {
+		return i
+	}
+	return l.search(e.next, v, i+1)
+}
+
+// Search value in the list. If element is present in the list return his position otherwise -1.
+// Recursive approach.
 func (l *List) Search(v interface{}) int {
+	i := 0
+	e := l.head
+	return l.search(e, v, i)
+}
+
+// Search value in the list. If element is present in the list return his position otherwise -1.
+// Iterative approach.
+/* func (l *List) Search(v interface{}) int {
 	i := 0
 	for p := l.head; p != nil; p = p.next {
 		if p.Value == v {
@@ -166,7 +185,7 @@ func (l *List) Search(v interface{}) int {
 	}
 
 	return -1
-}
+} */
 
 func (l *List) Print() {
 	for e := l.Front(); e != nil; e = e.Next() {
@@ -179,6 +198,6 @@ func main() {
 	list.PushBack(1)
 	list.PushBack(2)
 	list.InsertAt(1, 10)
-	list.Print()
-	fmt.Println(list.Search(10))
+	// list.Print()
+	fmt.Println(list.Search(1))
 }
