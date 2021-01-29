@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Element struct {
 	next  *Element
@@ -155,6 +157,20 @@ func (l *List) InsertAt(n int, v interface{}) *Element {
 	return e
 }
 
+// Reverse linked list
+func (l *List) Reverse() {
+	var previous *Element = nil
+	var next *Element = nil
+	current := l.head
+	for current != nil {
+		next = current.next
+		current.next = previous
+		previous = current
+		current = next
+	}
+	l.head = previous
+}
+
 func (l *List) search(e *Element, v interface{}, i int) int {
 	if e == nil {
 		return -1
@@ -197,7 +213,12 @@ func main() {
 	list := New()
 	list.PushBack(1)
 	list.PushBack(2)
-	list.InsertAt(1, 10)
-	// list.Print()
-	fmt.Println(list.Search(1))
+	list.PushBack(3)
+	list.PushBack(4)
+	fmt.Println("Before reverse")
+	list.Print()
+	// fmt.Println(list.Search(1))
+	list.Reverse()
+	fmt.Println("After reverse")
+	list.Print()
 }
