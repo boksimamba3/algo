@@ -35,7 +35,7 @@ func (l *List) Insert(value int) {
 	iterate trough length - n, where n is position of of n-th element
 	from back.
 */
-func (l *List) FromBack(n int) int {
+/* func (l *List) FromBack(n int) int {
 	len := 0
 	p := l.head
 	for p := l.head; p != nil; p = p.next {
@@ -49,6 +49,35 @@ func (l *List) FromBack(n int) int {
 		p = p.next
 	}
 	return p.value
+} */
+
+// Solution: O(n) one iteration
+/*
+	Using two pointer approach we can solve this problem
+	with one iteration. We move first pointer n positions so that
+	difference between first and second pointer is n positions.
+	Once we done that we move first and second pointer one step
+	each iteration. When first pointer reaches end, second pointer
+	will be at n-th position from back.
+*/
+func (l *List) FromBack(n int) int {
+	if l.head == nil {
+		return -1
+	}
+	first := l.head
+	for i := 0; i < n; i++ {
+		if first == nil {
+			return -1
+		}
+		first = first.next
+	}
+	second := l.head
+	for first != nil {
+		first = first.next
+		second = second.next
+	}
+
+	return second.value
 }
 
 func Print(l *List) {
@@ -65,5 +94,7 @@ func main() {
 	list.Insert(2)
 	list.Insert(1)
 	Print(list)
-	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(5))
+	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(1))  // 5
+	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(5))  // 1
+	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(10)) // -1
 }
