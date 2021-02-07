@@ -2,15 +2,6 @@ package main
 
 import "fmt"
 
-// Question: Find middle element of linked list.
-
-// Solution: O(N)
-/*
-	We have two pointer. One slow and one fast. Slow moves
-	one element(node) at time while fast moves two elements(nodes).
-	When fast reaches end slow will reach the middle.
-*/
-
 type Element struct {
 	value int
 	next  *Element
@@ -34,6 +25,14 @@ func (l *List) Insert(value int) {
 	l.head = e
 }
 
+// Question: Find middle element of linked list.
+
+// Solution: O(N)
+/*
+	We have two pointer. One slow and one fast. Slow moves
+	one element(node) at time while fast moves two elements(nodes).
+	When fast reaches end slow will reach the middle.
+*/
 func (l *List) GetMiddle() int {
 	if l.head == nil {
 		return -1

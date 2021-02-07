@@ -2,16 +2,6 @@ package main
 
 import "fmt"
 
-// Question: Sorted insert in the linked list.
-// The linked list should remain sorted after insertion.
-
-// Solution: O(N)
-/*
-	To insert elements in sorted order we need to find prev element
-	that has value less then value we are inserting. After that we just
-	hook up all the pointers like in ordinary linked list.
-*/
-
 type Element struct {
 	value int
 	next  *Element
@@ -29,6 +19,15 @@ func NewList() *List {
 	return &List{}
 }
 
+// Question: Sorted insert in the linked list.
+// The linked list should remain sorted after insertion.
+
+// Solution: O(N)
+/*
+	To insert elements in sorted order we need to find prev element
+	that has value less then value we are inserting. After that we just
+	hook up all the pointers like in ordinary linked list.
+*/
 func (l *List) SortedInsert(value int) {
 	e := NewElement(value)
 	if l.head == nil {
