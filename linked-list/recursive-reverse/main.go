@@ -31,7 +31,12 @@ func (l *List) Insert(value int) {
 func (l *List) Reverse() {
 	var reverse func(head *Element) *Element
 	reverse = func(head *Element) *Element {
-		if head == nil || head.next == nil {
+		// Base case for empty list
+		if head == nil {
+			return head
+		}
+		// Base case when we reach end of the list
+		if head.next == nil {
 			return head
 		}
 		newHead := reverse(head.next)
