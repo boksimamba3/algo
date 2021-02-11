@@ -31,15 +31,13 @@ func removeDuplicatesFromList(list *List) {
 		return
 	}
 	p := list.head
-	v := p.value
 	for p.next != nil {
 		next := p.next
-		if next.value == v {
+		if next.value == p.value {
 			p.next = next.next
 			next.next = nil
 		} else {
 			p = p.next
-			v = p.value
 		}
 	}
 }
@@ -65,5 +63,4 @@ func main() {
 	fmt.Println("Remove duplicates")
 	removeDuplicatesFromList(list)
 	printList(list)
-
 }
