@@ -43,7 +43,7 @@ func (l *List) SortedInsert(value int) {
 	}
 }
 
-func Print(l *List) {
+func printList(l *List) {
 	for p := l.head; p != nil; p = p.next {
 		fmt.Println(p.value)
 	}
@@ -56,5 +56,5 @@ func main() {
 	list.SortedInsert(9)
 	list.SortedInsert(4)
 	list.SortedInsert(2)
-	Print(list)
+	printList(list)
 }

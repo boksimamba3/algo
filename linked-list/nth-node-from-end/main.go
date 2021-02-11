@@ -80,7 +80,7 @@ func (l *List) FromBack(n int) int {
 	return second.value
 }
 
-func Print(l *List) {
+func printList(l *List) {
 	for p := l.head; p != nil; p = p.next {
 		fmt.Println(p.value)
 	}
@@ -93,7 +93,7 @@ func main() {
 	list.Insert(3)
 	list.Insert(2)
 	list.Insert(1)
-	Print(list)
+	printList(list)
 	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(1))  // 5
 	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(5))  // 1
 	fmt.Printf("Nth from back [ %v ]\n", list.FromBack(10)) // -1

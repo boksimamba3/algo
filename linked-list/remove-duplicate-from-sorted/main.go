@@ -25,29 +25,8 @@ func (l *List) Insert(value int) {
 	l.head = e
 }
 
-// Question: Reverse a linked list in a recursive manner.
+func removeDuplicatesFromList(list *List) {
 
-// Solution: O(n)
-func (l *List) Reverse() {
-	var reverse func(head *Element) *Element
-	reverse = func(head *Element) *Element {
-		// Base case for empty list
-		if head == nil {
-			return head
-		}
-		// Base case when we reach end of the list
-		if head.next == nil {
-			return head
-		}
-		newHead := reverse(head.next)
-		tail := head.next
-		tail.next = head
-		head.next = nil
-
-		return newHead
-	}
-
-	l.head = reverse(l.head)
 }
 
 func printList(l *List) {
@@ -64,7 +43,7 @@ func main() {
 	list.Insert(2)
 	list.Insert(1)
 	printList(list)
-	fmt.Println("Reversed")
-	list.Reverse()
+	removeDuplicatesFromList(list)
 	printList(list)
+
 }

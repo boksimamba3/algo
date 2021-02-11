@@ -47,7 +47,7 @@ func (l *List) GetMiddle() int {
 	return slow.value
 }
 
-func Print(l *List) {
+func printList(l *List) {
 	for p := l.head; p != nil; p = p.next {
 		fmt.Println(p.value)
 	}
@@ -61,6 +61,6 @@ func main() {
 	list.Insert(4)
 	list.Insert(2)
 	list.Insert(5)
-	Print(list)
+	printList(list)
 	fmt.Printf("Middle element [ %v ]", list.GetMiddle())
 }
