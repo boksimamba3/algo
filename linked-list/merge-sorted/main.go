@@ -27,7 +27,7 @@ func (l *List) Insert(value int) {
 
 // 1 -> 2 -> 3 -> 4 -> 5
 // 2 -> 4
-func merge(l1, l2 *List) *List {
+func sortedMerge(l1, l2 *List) *List {
 	if l1.head == nil {
 		return l2
 	}
@@ -38,40 +38,32 @@ func merge(l1, l2 *List) *List {
 	var newHead *Element
 	p1 := l1.head
 	p2 := l2.head
-	p3 := newHead
+
+	if p1.value < p2.value {
+		newHead = p1
+		p1 = p1.next
+	} else {
+		newHead = p2
+		p1 = p2.next
+	}
+	tail := newHead
 
 	for p1 != nil && p2 != nil {
 		if p1.value < p2.value {
-			if newHead == nil {
-				p3 = p1
-				newHead = p3
-			} else {
-				p3.next = p1
-				p3 = p1
-			}
+			tail.next = p1
+			tail = p1
 			p1 = p1.next
 		} else {
-			if newHead == nil {
-				p3 = p2
-				newHead = p3
-			} else {
-				p3.next = p2
-				p3 = p2
-			}
+			tail.next = p2
+			tail = p2
 			p2 = p2.next
 		}
 	}
 
-	for p1 != nil {
-		p3.next = p1
-		p3 = p3.next
-		p1 = p1.next
-	}
-
-	for p2 != nil {
-		p3.next = p2
-		p3 = p3.next
-		p2 = p2.next
+	if p1 == nil {
+		tail.next = p2
+	} else {
+		tail.next = p1
 	}
 
 	l1.head = newHead
@@ -103,6 +95,6 @@ func main() {
 	printList(l2)
 
 	fmt.Println("Merged list")
-	l3 := merge(l1, l2)
+	l3 := sortedMerge(l1, l2)
 	printList(l3)
 }
